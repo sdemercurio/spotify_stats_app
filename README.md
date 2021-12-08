@@ -4,3 +4,7 @@ utilizing the Spotify API
 
 ## Process
 Create index.js as entry point
+Set up development environment
+
+### Authorization Code Flow
+Request Auth from Spotify
