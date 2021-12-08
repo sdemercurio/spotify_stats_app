@@ -4,10 +4,21 @@ const app = express();
 
 //Route to home page
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    const data = {
+        name: 'Sarah',
+        isAwesome: true
+    };
+
+    res.json(data);
 });
 
-const port = 8888;
+app.get('/awesome-generator', (req, res) => {
+    const { name, isAwesome } = req.query;
+    res.send(`${name} is ${JSON.parse(isAwesome) ? 'really' :
+    'not'} awesome`);
+})
+
+const port = 8000;
 app.listen(port, () => {
     console.log(`Express app listening at http://localhost:${port}`);
 });
