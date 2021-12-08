@@ -5,7 +5,7 @@ const app = express();
 //Route to home page
 app.get('/', (req, res) => {
     const data = {
-        name: 'Sarah',
+        name: 'Hello',
         isAwesome: true
     };
 
