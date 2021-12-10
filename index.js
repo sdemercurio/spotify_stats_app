@@ -18,6 +18,22 @@ app.get('/', (req, res) => {
     res.json(data);
 });
 
+/**
+ * Generates a random string containing letters and numbers
+ * @param {number} length The lengthof the string
+ * @return {string} The generated string
+ */
+const generateRandomString = length => {
+    let text = '';
+    const possible =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+
+    for (let i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+};
+
 app.get('/login', (req, res) => {
     const queryParams = querystring.stringify({
         client_id: CLIENT_ID,
@@ -25,7 +41,7 @@ app.get('/login', (req, res) => {
         redirect_url: REDIRECT_URI,
     })
     // hit login route authorize endpoint and redirect to Spotify
-    res.redirect(`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}`);
+    res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });
 
 
